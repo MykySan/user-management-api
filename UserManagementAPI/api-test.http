@@ -1,0 +1,66 @@
+GET http://localhost:5246/api/user
+Accept: application/json
+
+###
+
+GET http://localhost:5246/api/user
+X-Api-Key: my-secret-api-key
+Accept: application/json
+
+###
+
+POST http://localhost:5246/api/user
+Content-Type: application/json
+
+{
+  "name": "Alice Johnson",
+  "email": "alice@example.com",
+  "age": 28
+}
+
+###
+
+POST http://localhost:5246/api/user
+X-Api-Key: wrong-api-key
+Content-Type: application/json
+
+{
+  "name": "Alice Johnson",
+  "email": "alice@example.com",
+  "age": 28
+}
+
+###
+
+POST http://localhost:5246/api/user
+X-Api-Key: my-secret-api-key
+Content-Type: application/json
+
+{
+  "name": "Bob Smith",
+  "email": "bob@example.com",
+  "age": 32
+}
+
+###
+
+GET http://localhost:5246/api/user/1
+X-Api-Key: my-secret-api-key
+Accept: application/json
+
+###
+
+PUT http://localhost:5246/api/user/1
+X-Api-Key: my-secret-api-key
+Content-Type: application/json
+
+{
+  "name": "Updated User",
+  "email": "updated@example.com",
+  "age": 30
+}
+
+###
+
+DELETE http://localhost:5246/api/user/4
+X-Api-Key: my-secret-api-key

@@ -1,4 +1,6 @@
 using Serilog;
+using UserManagementAPI.Repositories;
+using UserManagementAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,7 +16,10 @@ builder.Logging.AddSerilog();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddSingleton<UserManagementAPI.Services.UserService>();
+
+builder.Services.AddSingleton<IUserRepository, InMemoryUserRepository>();
+builder.Services.AddScoped<UserService>();
+
 
 var app = builder.Build();
 
